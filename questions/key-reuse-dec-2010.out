@@ -1,0 +1,1355 @@
+This analysis is of CA certs, defined by the x509v3 basic constraint CA
+It excludes those certificates uisng Netscape style CA certs
+include those with locate('CA', `X509v3 extensions:Netscape Cert Type`)
+select count(*), certid, RSA_Modulus_bits from valid_certs where locate('TRUE', `X509v3 extensions:X509v3 Basic Constraints:CA`) group by `RSA Public Key:Modulus`having count(distinct subject, `Validity:Not After`) > 1 order by RSA_Modulus_Bits desc;
+Found 94 groups of CA certs sharing keys
+
+2 CA certs of 4096 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US', 'PT']
+  Issuer Orgs: ['SCEE', 'GTE Corporation']
+  Subject Countries: ['PT']
+**   Subject Orgs: ['SCEE - Sistema de Certifica\\xE7\\xE3o Electr\\xF3nica do Estado', 'SCEE - Sistema de Certifica\\xC3\\xA7\\xC3\\xA3o Electr\\xC3\\xB3nica do Estado']
+  Earliest start was 2007-01-29 15:16:18 with certid 1176662 (expires 2018-08-01 14:14:41)
+  Earliest expiration 2018-08-01 14:14:41 with certid 1176662 (started 2007-01-29 15:16:18)
+  Latest start was 2008-07-17 16:09:15 with certid 790604 (expires 2019-01-29 18:12:36)
+  Latest expiration 2019-01-29 18:12:36 with certid 790604 (started 2008-07-17 16:09:15)
+**   Diff latest and earliest expiry: 181 days, 3:57:55
+  Total Validity Period: 4383 days, 2:56:18
+  Certids in group: [790604, 1176662]
+
+3 CA certs of 4096 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['PT', 'US']
+  Issuer Orgs: ['SCEE', 'GTE Corporation']
+  Subject Countries: ['PT']
+  Subject Orgs: ['SCEE']
+  Earliest start was 2006-06-23 13:41:27 with certid 225639 (expires 2030-06-23 13:41:27)
+  Earliest expiration 2018-08-13 14:13:41 with certid 223858 (started 2007-05-09 14:14:17)
+  Latest start was 2008-10-22 18:08:03 with certid 620252 (expires 2018-08-13 18:07:22)
+  Latest expiration 2030-06-23 13:41:27 with certid 225639 (started 2006-06-23 13:41:27)
+  Diff latest and earliest expiry: 4331 days, 23:27:46
+  Total Validity Period: 8766 days, 0:00:00
+  Possible roots certids: [225639]
+  Certids in group: [223858, 225639, 620252]
+
+3 CA certs of 4096 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['NL', 'US']
+  Issuer Orgs: ['Entrust.net', 'DigiNotar']
+  Subject Countries: ['NL']
+  Subject Orgs: ['DigiNotar']
+  Earliest start was 2007-04-26 05:00:00 with certid 232153 (expires 2013-08-14 20:12:36)
+  Earliest expiration 2013-08-14 20:12:36 with certid 232153 (started 2007-04-26 05:00:00)
+  Latest start was 2007-07-26 15:57:39 with certid 771003 (expires 2013-08-26 16:27:39)
+  Latest expiration 2025-03-31 18:19:21 with certid 609015 (started 2007-05-16 17:19:36)
+**   Diff latest and earliest expiry: 4246 days, 22:06:45
+  Total Validity Period: 6549 days, 13:19:21
+  Possible roots certids: [609015]
+  Certids in group: [232153, 609015, 771003]
+
+3 CA certs of 4096 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['BM']
+  Issuer Orgs: ['QuoVadis Limited']
+  Subject Countries: ['BM']
+  Subject Orgs: ['QuoVadis Limited']
+  Earliest start was 2006-11-24 18:27:00 with certid 1472 (expires 2031-11-24 18:23:33)
+  Earliest expiration 2017-01-25 18:28:45 with certid 325774 (started 2007-01-25 18:29:07)
+  Latest start was 2007-07-10 14:32:21 with certid 935 (expires 2017-07-10 14:31:04)
+  Latest expiration 2031-11-24 18:23:33 with certid 1472 (started 2006-11-24 18:27:00)
+  Diff latest and earliest expiry: 5415 days, 23:54:48
+  Total Validity Period: 9130 days, 23:56:33
+  Possible roots certids: [1472]
+  Certids in group: [935, 1472, 325774]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Northern Arizona University']
+  Subject Countries: ['US']
+  Subject Orgs: ['Northern Arizona University']
+  Earliest start was 2010-01-05 21:58:00 with certid 92973 (expires 2015-01-05 22:08:00)
+  Earliest expiration 2015-01-05 22:08:00 with certid 92973 (started 2010-01-05 21:58:00)
+  Latest start was 2010-04-15 15:57:25 with certid 93552 (expires 2015-04-15 16:07:25)
+  Latest expiration 2015-04-15 16:07:25 with certid 93552 (started 2010-04-15 15:57:25)
+**   Diff latest and earliest expiry: 99 days, 17:59:25
+  Total Validity Period: 1925 days, 18:09:25
+  Certids in group: [92973, 93552]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['IL']
+  Issuer Orgs: ['StartCom Ltd.']
+  Subject Countries: ['IL']
+  Subject Orgs: ['StartCom Ltd.']
+  Earliest start was 2007-10-24 21:02:54 with certid 223433 (expires 2012-10-22 21:02:54)
+  Earliest expiration 2012-10-22 21:02:54 with certid 223433 (started 2007-10-24 21:02:54)
+  Latest start was 2007-10-24 21:02:55 with certid 186838 (expires 2017-10-24 21:02:55)
+  Latest expiration 2017-10-24 21:02:55 with certid 186838 (started 2007-10-24 21:02:55)
+**   Diff latest and earliest expiry: 1828 days, 0:00:01
+  Total Validity Period: 3653 days, 0:00:01
+  Certids in group: [186838, 223433]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['DE']
+  Issuer Orgs: ['TC TrustCenter GmbH']
+  Subject Countries: ['DE']
+  Subject Orgs: ['TC TrustCenter GmbH']
+  Earliest start was 2009-09-09 08:15:27 with certid 250800 (expires 2029-12-31 23:59:59)
+  Earliest expiration 2025-12-31 21:59:59 with certid 232830 (started 2009-09-09 09:09:09)
+  Latest start was 2009-09-09 09:09:09 with certid 232830 (expires 2025-12-31 21:59:59)
+  Latest expiration 2029-12-31 23:59:59 with certid 250800 (started 2009-09-09 08:15:27)
+  Diff latest and earliest expiry: 1461 days, 2:00:00
+  Total Validity Period: 7418 days, 15:44:32
+  Possible roots certids: [250800]
+  Certids in group: [232830, 250800]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['SE', 'US']
+  Issuer Orgs: ['The USERTRUST Network', 'AddTrust AB']
+**   Subject Countries: ['GB', 'US']
+**   Subject Orgs: ['Comodo CA Limited', 'Positive Software Corporation']
+  Earliest start was 2005-07-14 00:00:00 with certid 23279 (expires 2020-05-30 10:48:38)
+  Earliest expiration 2019-07-09 18:19:22 with certid 28136 (started 2005-07-14 00:00:00)
+  Latest start was 2006-09-18 00:00:00 with certid 30 (expires 2020-05-30 10:48:38)
+  Latest expiration 2020-05-30 10:48:38 with certid 30 (started 2006-09-18 00:00:00)
+**   Diff latest and earliest expiry: 325 days, 16:29:16
+  Total Validity Period: 5434 days, 10:48:38
+  Certids in group: [30, 23279, 28136]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['GTE Corporation']
+**   Subject Countries: ['PT', 'pt']
+  Subject Orgs: ['MULTICERT-CA']
+  Earliest start was 2005-05-05 14:07:00 with certid 178348 (expires 2012-05-05 23:59:00)
+  Earliest expiration 2012-05-05 23:59:00 with certid 178348 (started 2005-05-05 14:07:00)
+  Latest start was 2009-06-03 13:50:37 with certid 256854 (expires 2013-10-02 13:49:20)
+  Latest expiration 2013-10-02 13:49:20 with certid 256854 (started 2009-06-03 13:50:37)
+**   Diff latest and earliest expiry: 514 days, 13:50:20
+  Total Validity Period: 3071 days, 23:42:20
+  Certids in group: [178348, 256854, 634542]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['IL']
+  Issuer Orgs: ['StartCom Ltd.']
+  Subject Countries: ['IL']
+  Subject Orgs: ['StartCom Ltd.']
+  Earliest start was 2007-10-24 20:58:23 with certid 468580 (expires 2012-10-22 20:58:23)
+  Earliest expiration 2012-10-22 20:58:23 with certid 468580 (started 2007-10-24 20:58:23)
+  Latest start was 2007-10-24 20:58:24 with certid 213424 (expires 2017-10-24 20:58:24)
+  Latest expiration 2017-10-24 20:58:24 with certid 213424 (started 2007-10-24 20:58:24)
+**   Diff latest and earliest expiry: 1828 days, 0:00:01
+  Total Validity Period: 3653 days, 0:00:01
+  Certids in group: [213424, 468580]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Equifax', 'GeoTrust Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['GeoTrust Inc.']
+  Earliest start was 2002-05-21 04:00:00 with certid 611 (expires 2018-08-21 04:00:00)
+  Earliest expiration 2018-08-21 04:00:00 with certid 611 (started 2002-05-21 04:00:00)
+  Latest start was 2002-05-21 04:00:00 with certid 611 (expires 2018-08-21 04:00:00)
+  Latest expiration 2022-05-21 04:00:00 with certid 3415 (started 2002-05-21 04:00:00)
+**   Diff latest and earliest expiry: 1369 days, 0:00:00
+  Total Validity Period: 7305 days, 0:00:00
+  Possible roots certids: [3415]
+  Certids in group: [611, 3415]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['CO']
+  Issuer Orgs: ['Sociedad Cameral de Certificaci\\xC3\\xB3n Digital - Certic\\xC3\\xA1mara S.A.']
+  Subject Countries: ['CO']
+  Subject Orgs: ['Sociedad Cameral de Certificaci\\xC3\\xB3n Digital - Certic\\xC3\\xA1mara S.A.']
+  Earliest start was 2006-11-27 21:19:02 with certid 212599 (expires 2056-11-27 21:16:46)
+  Earliest expiration 2030-04-01 21:42:02 with certid 212474 (started 2008-05-16 21:41:28)
+  Latest start was 2008-05-16 21:41:28 with certid 212474 (expires 2030-04-01 21:42:02)
+  Latest expiration 2056-11-27 21:16:46 with certid 212599 (started 2006-11-27 21:19:02)
+  Diff latest and earliest expiry: 9736 days, 23:34:44
+  Total Validity Period: 18262 days, 23:57:44
+  Certids in group: [212474, 212599]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['ES']
+  Issuer Orgs: []
+  Subject Countries: ['ES']
+  Subject Orgs: ['Firmaprofesional S.A. NIF A-62634068']
+  Earliest start was 2003-03-27 11:51:38 with certid 207210 (expires 2013-03-25 23:00:00)
+  Earliest expiration 2013-03-25 23:00:00 with certid 207210 (started 2003-03-27 11:51:38)
+  Latest start was 2009-08-25 10:05:54 with certid 612627 (expires 2030-06-16 10:05:54)
+  Latest expiration 2030-06-16 10:05:54 with certid 612627 (started 2009-08-25 10:05:54)
+**   Diff latest and earliest expiry: 6291 days, 11:05:54
+  Total Validity Period: 9942 days, 22:14:16
+  Certids in group: [207210, 612627]
+
+2 CA certs of 2048 bits
+ ** Valid certs using this key != simple CA count: 3
+ **  certid: 557 Netscape Cert: None x509 CA: (critical) TRUE
+ **  certid: 3085 Netscape Cert: None x509 CA: (critical) TRUE
+ **  certid: 3322 Netscape Cert: SSL CA, S/MIME CA, Object Signing CA x509 CA: None
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Entrust.net']
+  Subject Countries: []
+  Subject Orgs: ['Entrust.net']
+  Earliest start was 1999-12-24 17:50:51 with certid 3085 (expires 2029-07-24 14:15:12)
+  Earliest expiration 2019-03-23 15:48:27 with certid 557 (started 2009-03-23 15:18:27)
+  Latest start was 2009-03-23 15:18:27 with certid 557 (expires 2019-03-23 15:48:27)
+  Latest expiration 2029-07-24 14:15:12 with certid 3085 (started 1999-12-24 17:50:51)
+  Diff latest and earliest expiry: 3775 days, 22:26:45
+  Total Validity Period: 10804 days, 20:24:21
+  Possible roots certids: [3322, 3085]
+  Certids in group: [557, 3085, 3322]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['The Go Daddy Group, Inc.', 'ValiCert, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['The Go Daddy Group, Inc.']
+  Earliest start was 2004-06-29 17:06:20 with certid 6 (expires 2024-06-29 17:06:20)
+  Earliest expiration 2024-06-29 17:06:20 with certid 6 (started 2004-06-29 17:06:20)
+  Latest start was 2006-12-27 18:28:51 with certid 467539 (expires 2026-12-27 18:28:51)
+  Latest expiration 2034-06-29 17:06:20 with certid 317 (started 2004-06-29 17:06:20)
+**   Diff latest and earliest expiry: 3652 days, 0:00:00
+  Total Validity Period: 10957 days, 0:00:00
+  Possible roots certids: [317]
+  Certids in group: [6, 317, 467539]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['LU']
+  Issuer Orgs: ['LuxTrust s.a.']
+  Subject Countries: ['LU']
+  Subject Orgs: ['LuxTrust s.a']
+  Earliest start was 2006-11-08 09:50:43 with certid 143495 (expires 2015-10-08 08:50:43)
+  Earliest expiration 2015-10-08 08:50:43 with certid 143495 (started 2006-11-08 09:50:43)
+  Latest start was 2006-12-28 14:32:12 with certid 143089 (expires 2015-10-28 14:32:12)
+  Latest expiration 2015-10-28 14:32:12 with certid 143089 (started 2006-12-28 14:32:12)
+**   Diff latest and earliest expiry: 20 days, 5:41:29
+  Total Validity Period: 3276 days, 4:41:29
+  Certids in group: [143089, 143495]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['The USERTRUST Network']
+  Subject Countries: ['US']
+**   Subject Orgs: ['Wotone Communications, Inc.', 'WoSign, Inc.']
+  Earliest start was 2006-10-03 00:00:00 with certid 10480 (expires 2019-07-09 18:19:22)
+  Earliest expiration 2019-07-09 18:19:22 with certid 5344 (started 2007-04-25 00:00:00)
+  Latest start was 2007-04-25 00:00:00 with certid 5344 (expires 2019-07-09 18:19:22)
+  Latest expiration 2019-07-09 18:19:22 with certid 5344 (started 2007-04-25 00:00:00)
+**   Diff latest and earliest expiry: 0:00:00
+  Total Validity Period: 4662 days, 18:19:22
+  Certids in group: [5344, 10480]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['VeriSign, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['VeriSign, Inc.']
+  Earliest start was 2010-02-08 00:00:00 with certid 333 (expires 2020-02-07 23:59:59)
+  Earliest expiration 2014-01-01 23:59:59 with certid 279756 (started 2010-09-30 00:00:00)
+  Latest start was 2010-09-30 00:00:00 with certid 279756 (expires 2014-01-01 23:59:59)
+  Latest expiration 2020-02-07 23:59:59 with certid 333 (started 2010-02-08 00:00:00)
+  Diff latest and earliest expiry: 2228 days, 0:00:00
+  Total Validity Period: 3651 days, 23:59:59
+  Certids in group: [333, 279756]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: []
+  Subject Countries: ['US']
+  Subject Orgs: []
+  Earliest start was 2005-12-13 21:30:19 with certid 1089913 (expires 2010-12-29 10:30:19)
+  Earliest expiration 2010-12-29 10:30:19 with certid 1089913 (started 2005-12-13 21:30:19)
+  Latest start was 2008-12-18 18:10:22 with certid 1091398 (expires 2016-12-28 15:48:10)
+  Latest expiration 2016-12-28 15:48:10 with certid 1091398 (started 2008-12-18 18:10:22)
+**   Diff latest and earliest expiry: 2191 days, 5:17:51
+  Total Validity Period: 4032 days, 18:17:51
+  Certids in group: [1089913, 1091398]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['BE']
+  Issuer Orgs: ['Certipost s.a./n.v.']
+  Subject Countries: ['BE']
+  Subject Orgs: ['Certipost s.a./n.v.']
+  Earliest start was 2005-07-26 10:00:00 with certid 206342 (expires 2015-07-26 10:00:00)
+  Earliest expiration 2015-07-26 10:00:00 with certid 206342 (started 2005-07-26 10:00:00)
+  Latest start was 2005-07-26 10:00:00 with certid 206342 (expires 2015-07-26 10:00:00)
+  Latest expiration 2017-03-07 14:00:00 with certid 227693 (started 2005-07-26 10:00:00)
+**   Diff latest and earliest expiry: 590 days, 4:00:00
+  Total Validity Period: 4242 days, 4:00:00
+  Certids in group: [206342, 227693, 233836]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['DK']
+  Issuer Orgs: ['TDC Internet']
+  Subject Countries: ['DK']
+  Subject Orgs: ['TDC']
+  Earliest start was 2006-09-28 10:40:50 with certid 73137 (expires 2011-09-28 11:10:50)
+  Earliest expiration 2011-09-28 11:10:50 with certid 73137 (started 2006-09-28 10:40:50)
+  Latest start was 2010-03-25 08:51:29 with certid 88174 (expires 2014-08-25 09:21:29)
+  Latest expiration 2014-08-25 09:21:29 with certid 88174 (started 2010-03-25 08:51:29)
+**   Diff latest and earliest expiry: 1061 days, 22:10:39
+  Total Validity Period: 2887 days, 22:40:39
+  Certids in group: [73137, 88174]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Starfield Technologies, Inc.', 'ValiCert, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['Starfield Technologies, Inc.']
+  Earliest start was 2004-06-29 17:39:16 with certid 25 (expires 2024-06-29 17:39:16)
+  Earliest expiration 2024-06-29 17:39:16 with certid 25 (started 2004-06-29 17:39:16)
+  Latest start was 2006-12-27 18:22:40 with certid 508497 (expires 2026-12-27 18:22:40)
+  Latest expiration 2034-06-29 17:39:16 with certid 9060 (started 2004-06-29 17:39:16)
+**   Diff latest and earliest expiry: 3652 days, 0:00:00
+  Total Validity Period: 10957 days, 0:00:00
+  Possible roots certids: [9060]
+  Certids in group: [25, 9060, 508497]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['IL']
+  Issuer Orgs: ['StartCom Ltd.']
+  Subject Countries: ['IL']
+  Subject Orgs: ['StartCom Ltd.']
+  Earliest start was 2007-10-24 20:54:16 with certid 115 (expires 2012-10-22 20:54:16)
+  Earliest expiration 2012-10-22 20:54:16 with certid 115 (started 2007-10-24 20:54:16)
+  Latest start was 2007-10-24 20:54:17 with certid 237 (expires 2017-10-24 20:54:17)
+  Latest expiration 2017-10-24 20:54:17 with certid 237 (started 2007-10-24 20:54:17)
+**   Diff latest and earliest expiry: 1828 days, 0:00:01
+  Total Validity Period: 3653 days, 0:00:01
+  Certids in group: [115, 237, 397862]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: []
+  Issuer Orgs: []
+  Subject Countries: []
+  Subject Orgs: []
+  Earliest start was 2010-04-20 22:47:45 with certid 85734 (expires 2014-04-20 22:57:45)
+  Earliest expiration 2014-04-20 22:57:45 with certid 85734 (started 2010-04-20 22:47:45)
+  Latest start was 2010-04-20 23:25:18 with certid 85525 (expires 2014-04-20 23:35:18)
+  Latest expiration 2014-04-20 23:35:18 with certid 85525 (started 2010-04-20 23:25:18)
+**   Diff latest and earliest expiry: 0:37:33
+  Total Validity Period: 1461 days, 0:47:33
+  Certids in group: [85525, 85734]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US', 'GB', 'SE']
+  Issuer Orgs: ['COMODO CA Limited', 'The USERTRUST Network', 'AddTrust AB']
+  Subject Countries: ['GB']
+  Subject Orgs: ['COMODO CA Limited']
+  Earliest start was 2006-12-01 00:00:00 with certid 733 (expires 2019-12-31 23:59:59)
+  Earliest expiration 2019-06-24 19:06:30 with certid 28103 (started 2006-12-01 00:00:00)
+  Latest start was 2007-01-01 00:00:00 with certid 28102 (expires 2020-05-30 10:48:38)
+  Latest expiration 2020-05-30 10:48:38 with certid 28102 (started 2007-01-01 00:00:00)
+**   Diff latest and earliest expiry: 340 days, 15:42:08
+  Total Validity Period: 4929 days, 10:48:38
+  Certids in group: [733, 28102, 28103]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['HU']
+  Issuer Orgs: ['Microsec Ltd.']
+  Subject Countries: ['HU']
+  Subject Orgs: ['Microsec Ltd.']
+  Earliest start was 2005-05-25 09:06:13 with certid 237999 (expires 2015-05-25 09:06:13)
+  Earliest expiration 2015-05-25 09:06:13 with certid 237999 (started 2005-05-25 09:06:13)
+  Latest start was 2008-10-13 11:58:18 with certid 1229 (expires 2015-05-25 11:58:18)
+  Latest expiration 2015-05-25 11:58:18 with certid 1229 (started 2008-10-13 11:58:18)
+**   Diff latest and earliest expiry: 2:52:05
+  Total Validity Period: 3652 days, 2:52:05
+  Certids in group: [1229, 237999]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Cybertrust, Inc', 'GTE Corporation']
+  Subject Countries: []
+  Subject Orgs: ['Cybertrust, Inc']
+  Earliest start was 2006-12-15 08:00:00 with certid 65503 (expires 2021-12-15 08:00:00)
+  Earliest expiration 2017-04-25 14:13:13 with certid 5824 (started 2007-04-25 14:13:43)
+  Latest start was 2007-04-25 14:13:43 with certid 5824 (expires 2017-04-25 14:13:13)
+  Latest expiration 2021-12-15 08:00:00 with certid 65503 (started 2006-12-15 08:00:00)
+  Diff latest and earliest expiry: 1694 days, 17:46:47
+  Total Validity Period: 5479 days, 0:00:00
+  Possible roots certids: [65503]
+  Certids in group: [5824, 65503]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['IE']
+  Issuer Orgs: ['Baltimore']
+  Subject Countries: ['TW']
+  Subject Orgs: ['TAIWAN-CA INC.']
+  Earliest start was 2010-04-07 18:06:53 with certid 105140 (expires 2016-09-30 18:05:05)
+  Earliest expiration 2016-09-30 16:45:17 with certid 48024 (started 2010-12-08 17:46:00)
+  Latest start was 2010-12-08 17:46:00 with certid 48024 (expires 2016-09-30 16:45:17)
+  Latest expiration 2016-09-30 18:05:05 with certid 105140 (started 2010-04-07 18:06:53)
+  Diff latest and earliest expiry: 1:19:48
+  Total Validity Period: 2367 days, 23:58:12
+  Certids in group: [48024, 105140]
+
+5 CA certs of 2048 bits
+ Total valid certs using this key also 5
+  Issuer Countries: ['BE']
+  Issuer Orgs: ['GlobalSign nv-sa']
+  Subject Countries: ['BE']
+  Subject Orgs: ['GlobalSign nv-sa']
+  Earliest start was 2007-01-10 10:00:00 with certid 1161 (expires 2014-01-27 11:00:00)
+  Earliest expiration 2014-01-27 11:00:00 with certid 214 (started 2007-05-04 10:00:00)
+  Latest start was 2007-05-04 10:00:00 with certid 194 (expires 2017-05-04 12:00:00)
+  Latest expiration 2017-05-04 12:00:00 with certid 194 (started 2007-05-04 10:00:00)
+**   Diff latest and earliest expiry: 1193 days, 1:00:00
+  Total Validity Period: 3767 days, 2:00:00
+  Certids in group: [194, 214, 287, 1161, 251782]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Entrust.net']
+  Subject Countries: ['US']
+  Subject Orgs: ['Entrust, Inc.']
+  Earliest start was 2009-12-10 20:43:54 with certid 556 (expires 2019-12-10 21:13:54)
+  Earliest expiration 2014-01-23 19:25:52 with certid 64005 (started 2010-08-23 18:55:52)
+  Latest start was 2010-08-23 18:55:52 with certid 64005 (expires 2014-01-23 19:25:52)
+  Latest expiration 2019-12-10 21:13:54 with certid 556 (started 2009-12-10 20:43:54)
+  Diff latest and earliest expiry: 2147 days, 1:48:02
+  Total Validity Period: 3652 days, 0:30:00
+  Certids in group: [556, 64005]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: []
+  Issuer Orgs: ['Munich Re Group']
+  Subject Countries: []
+  Subject Orgs: ['Munich Re Group']
+  Earliest start was 2007-08-30 10:13:30 with certid 47425 (expires 2012-08-30 10:11:27)
+  Earliest expiration 2012-08-30 10:11:27 with certid 47425 (started 2007-08-30 10:13:30)
+  Latest start was 2010-05-11 12:57:02 with certid 47237 (expires 2015-05-11 12:56:52)
+  Latest expiration 2015-05-11 12:56:52 with certid 47237 (started 2010-05-11 12:57:02)
+**   Diff latest and earliest expiry: 984 days, 2:45:25
+  Total Validity Period: 2811 days, 2:43:22
+  Certids in group: [47237, 47425]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: []
+  Issuer Orgs: ['RSA Security Inc.', 'RSA Security Inc']
+  Subject Countries: ['US']
+  Subject Orgs: []
+  Earliest start was 2005-12-08 15:02:54 with certid 1089914 (expires 2011-01-01 10:28:42)
+  Earliest expiration 2011-01-01 10:28:42 with certid 1089914 (started 2005-12-08 15:02:54)
+  Latest start was 2008-12-15 18:13:54 with certid 1091399 (expires 2016-12-31 15:46:54)
+  Latest expiration 2016-12-31 15:46:54 with certid 1091399 (started 2008-12-15 18:13:54)
+**   Diff latest and earliest expiry: 2191 days, 5:18:12
+  Total Validity Period: 4041 days, 0:44:00
+  Certids in group: [1089914, 1091399]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Entrust.net', 'Entrust, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['Entrust, Inc.']
+  Earliest start was 2006-11-27 20:23:42 with certid 31746 (expires 2026-11-27 20:53:42)
+  Earliest expiration 2017-01-05 19:50:39 with certid 8063 (started 2007-01-05 19:20:39)
+  Latest start was 2007-01-05 19:20:39 with certid 8063 (expires 2017-01-05 19:50:39)
+  Latest expiration 2026-11-27 20:53:42 with certid 31746 (started 2006-11-27 20:23:42)
+  Diff latest and earliest expiry: 3613 days, 1:03:03
+  Total Validity Period: 7305 days, 0:30:00
+  Possible roots certids: [31746]
+  Certids in group: [8063, 31746]
+
+4 CA certs of 2048 bits
+ Total valid certs using this key also 4
+  Issuer Countries: ['BE']
+  Issuer Orgs: ['GlobalSign nv-sa']
+  Subject Countries: []
+  Subject Orgs: ['GlobalSign']
+  Earliest start was 2007-03-19 12:00:00 with certid 244728 (expires 2017-04-11 12:00:00)
+  Earliest expiration 2014-01-27 11:00:00 with certid 206 (started 2007-04-11 12:00:00)
+  Latest start was 2007-04-11 12:00:00 with certid 206 (expires 2014-01-27 11:00:00)
+  Latest expiration 2017-04-11 12:00:00 with certid 253 (started 2007-04-11 12:00:00)
+**   Diff latest and earliest expiry: 1170 days, 1:00:00
+  Total Validity Period: 3676 days, 0:00:00
+  Certids in group: [206, 253, 575, 244728]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['The USERTRUST Network']
+**   Subject Countries: ['GB', 'US']
+**   Subject Orgs: ['Comodo CA Limited', 'OptimumSSL CA']
+  Earliest start was 2006-09-18 00:00:00 with certid 523408 (expires 2020-05-30 10:48:38)
+  Earliest expiration 2020-05-30 10:48:38 with certid 917 (started 2007-01-31 00:00:00)
+  Latest start was 2007-01-31 00:00:00 with certid 917 (expires 2020-05-30 10:48:38)
+  Latest expiration 2020-05-30 10:48:38 with certid 917 (started 2007-01-31 00:00:00)
+**   Diff latest and earliest expiry: 0:00:00
+  Total Validity Period: 5003 days, 10:48:38
+  Certids in group: [917, 523408]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Digital Signature Trust']
+  Subject Countries: ['US']
+  Subject Orgs: ['Digital Signature Trust']
+  Earliest start was 2006-09-14 22:42:39 with certid 25456 (expires 2011-09-14 20:26:31)
+  Earliest expiration 2011-09-14 20:26:31 with certid 25456 (started 2006-09-14 22:42:39)
+  Latest start was 2009-06-05 17:38:53 with certid 861311 (expires 2016-06-05 20:38:49)
+  Latest expiration 2016-06-05 20:38:49 with certid 861311 (started 2009-06-05 17:38:53)
+**   Diff latest and earliest expiry: 1726 days, 0:12:18
+  Total Validity Period: 3551 days, 21:56:10
+  Certids in group: [25456, 861311, 868282]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['SAIC']
+  Subject Countries: ['US']
+  Subject Orgs: ['SAIC']
+  Earliest start was 2005-02-22 21:47:48 with certid 102880 (expires 2011-02-22 21:57:48)
+  Earliest expiration 2011-02-22 21:57:48 with certid 102880 (started 2005-02-22 21:47:48)
+  Latest start was 2008-03-08 00:06:21 with certid 102989 (expires 2014-03-08 00:16:21)
+  Latest expiration 2014-03-08 00:16:21 with certid 102989 (started 2008-03-08 00:06:21)
+**   Diff latest and earliest expiry: 1109 days, 2:18:33
+  Total Validity Period: 3300 days, 2:28:33
+  Certids in group: [102880, 102989]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['VeriSign, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['VeriSign, Inc.']
+  Earliest start was 2010-02-08 00:00:00 with certid 2081 (expires 2020-02-07 23:59:59)
+  Earliest expiration 2014-01-01 23:59:59 with certid 112679 (started 2010-09-30 00:00:00)
+  Latest start was 2010-09-30 00:00:00 with certid 112679 (expires 2014-01-01 23:59:59)
+  Latest expiration 2020-02-07 23:59:59 with certid 2081 (started 2010-02-08 00:00:00)
+  Diff latest and earliest expiry: 2228 days, 0:00:00
+  Total Validity Period: 3651 days, 23:59:59
+  Certids in group: [2081, 112679, 527598]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['IE', 'US']
+  Issuer Orgs: ['GTE Corporation', 'Baltimore']
+  Subject Countries: ['IE']
+  Subject Orgs: ['Baltimore']
+  Earliest start was 2000-05-12 18:46:00 with certid 118386 (expires 2025-05-12 23:59:00)
+  Earliest expiration 2018-08-10 15:34:26 with certid 364587 (started 2010-11-30 16:35:21)
+  Latest start was 2010-11-30 16:35:21 with certid 364587 (expires 2018-08-10 15:34:26)
+  Latest expiration 2025-05-12 23:59:00 with certid 118386 (started 2000-05-12 18:46:00)
+  Diff latest and earliest expiry: 2467 days, 8:24:34
+  Total Validity Period: 9131 days, 5:13:00
+  Possible roots certids: [118386]
+  Certids in group: [118386, 364587]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['VeriSign, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['Thawte, Inc.']
+  Earliest start was 2010-07-29 00:00:00 with certid 6593 (expires 2020-07-28 23:59:59)
+  Earliest expiration 2014-01-01 23:59:59 with certid 212790 (started 2010-09-30 00:00:00)
+  Latest start was 2010-09-30 00:00:00 with certid 212790 (expires 2014-01-01 23:59:59)
+  Latest expiration 2020-07-28 23:59:59 with certid 6593 (started 2010-07-29 00:00:00)
+  Diff latest and earliest expiry: 2400 days, 0:00:00
+  Total Validity Period: 3652 days, 23:59:59
+  Certids in group: [6593, 212790]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['IL']
+  Issuer Orgs: ['StartCom Ltd.']
+  Subject Countries: ['IL']
+  Subject Orgs: ['StartCom Ltd.']
+  Earliest start was 2007-10-24 20:57:08 with certid 519 (expires 2012-10-22 20:57:08)
+  Earliest expiration 2012-10-22 20:57:08 with certid 519 (started 2007-10-24 20:57:08)
+  Latest start was 2007-10-24 20:57:09 with certid 1272 (expires 2017-10-24 20:57:09)
+  Latest expiration 2017-10-24 20:57:09 with certid 1272 (started 2007-10-24 20:57:09)
+**   Diff latest and earliest expiry: 1828 days, 0:00:01
+  Total Validity Period: 3653 days, 0:00:01
+  Certids in group: [519, 1272, 1308891]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['GB', 'US']
+  Issuer Orgs: ['Comodo CA Limited', 'The USERTRUST Network']
+  Subject Countries: ['US']
+  Subject Orgs: ['The USERTRUST Network']
+  Earliest start was 1999-07-09 17:28:50 with certid 83085 (expires 2019-07-09 17:36:58)
+  Earliest expiration 2019-07-09 17:36:58 with certid 83085 (started 1999-07-09 17:28:50)
+  Latest start was 2004-01-01 00:00:00 with certid 327815 (expires 2028-12-31 23:59:59)
+  Latest expiration 2028-12-31 23:59:59 with certid 327815 (started 2004-01-01 00:00:00)
+**   Diff latest and earliest expiry: 3463 days, 6:23:01
+  Total Validity Period: 10768 days, 6:31:09
+  Possible roots certids: [83085]
+  Certids in group: [83085, 327815]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['IL']
+  Issuer Orgs: ['StartCom Ltd.']
+  Subject Countries: ['IL']
+  Subject Orgs: ['StartCom Ltd.']
+  Earliest start was 2007-10-24 23:16:02 with certid 608565 (expires 2017-10-24 23:16:02)
+  Earliest expiration 2017-10-24 23:16:02 with certid 608565 (started 2007-10-24 23:16:02)
+  Latest start was 2009-01-01 06:00:01 with certid 219582 (expires 2019-01-01 06:00:01)
+  Latest expiration 2019-01-01 06:00:01 with certid 219582 (started 2009-01-01 06:00:01)
+**   Diff latest and earliest expiry: 433 days, 6:43:59
+  Total Validity Period: 4086 days, 6:43:59
+  Certids in group: [186619, 219582, 608565]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['ZA', 'US']
+  Issuer Orgs: ['Thawte Consulting cc', 'thawte, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['Thawte, Inc.']
+  Earliest start was 2010-02-08 00:00:00 with certid 104 (expires 2020-02-07 23:59:59)
+  Earliest expiration 2014-01-01 23:59:59 with certid 153715 (started 2010-09-30 00:00:00)
+  Latest start was 2010-09-30 00:00:00 with certid 153715 (expires 2014-01-01 23:59:59)
+  Latest expiration 2020-02-07 23:59:59 with certid 104 (started 2010-02-08 00:00:00)
+  Diff latest and earliest expiry: 2228 days, 0:00:00
+  Total Validity Period: 3651 days, 23:59:59
+  Certids in group: [104, 9121, 153715]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['GB']
+  Issuer Orgs: ['Trustis Limited']
+  Subject Countries: ['GB']
+  Subject Orgs: ['Trustis Limited']
+  Earliest start was 2004-10-05 11:30:44 with certid 705889 (expires 2014-10-05 11:43:20)
+  Earliest expiration 2014-10-05 11:43:20 with certid 705889 (started 2004-10-05 11:30:44)
+  Latest start was 2004-11-23 11:53:05 with certid 252368 (expires 2014-10-05 11:53:05)
+  Latest expiration 2014-10-05 11:53:05 with certid 252368 (started 2004-11-23 11:53:05)
+**   Diff latest and earliest expiry: 0:09:45
+  Total Validity Period: 3652 days, 0:22:21
+  Certids in group: [252368, 705889]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['IT', 'US']
+  Issuer Orgs: ['GTE Corporation', 'SIA S.p.A.']
+  Subject Countries: ['IT']
+  Subject Orgs: ['Actalis S.p.A.']
+  Earliest start was 2003-11-04 08:34:00 with certid 131898 (expires 2013-11-04 23:59:00)
+  Earliest expiration 2013-11-04 23:59:00 with certid 131898 (started 2003-11-04 08:34:00)
+  Latest start was 2007-04-04 14:15:14 with certid 80825 (expires 2014-04-04 14:14:20)
+  Latest expiration 2014-04-04 14:14:20 with certid 80825 (started 2007-04-04 14:15:14)
+**   Diff latest and earliest expiry: 150 days, 14:15:20
+  Total Validity Period: 3804 days, 5:40:20
+  Certids in group: [80825, 131898]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US', 'UK']
+  Issuer Orgs: ['GTE Corporation', 'Vodafone Group']
+  Subject Countries: ['UK']
+  Subject Orgs: ['Vodafone Group']
+  Earliest start was 2006-11-29 12:00:00 with certid 263890 (expires 2021-12-31 12:00:00)
+  Earliest expiration 2015-12-03 14:57:57 with certid 272255 (started 2008-12-03 14:58:16)
+  Latest start was 2008-12-03 14:58:16 with certid 272255 (expires 2015-12-03 14:57:57)
+  Latest expiration 2021-12-31 12:00:00 with certid 263890 (started 2006-11-29 12:00:00)
+  Diff latest and earliest expiry: 2219 days, 21:02:03
+  Total Validity Period: 5511 days, 0:00:00
+  Certids in group: [263890, 272255]
+
+5 CA certs of 2048 bits
+ Total valid certs using this key also 5
+  Issuer Countries: ['BE']
+  Issuer Orgs: ['GlobalSign nv-sa', 'GlobalSign']
+  Subject Countries: []
+  Subject Orgs: ['GlobalSign']
+  Earliest start was 2006-12-15 08:00:00 with certid 123887 (expires 2021-12-15 08:00:00)
+  Earliest expiration 2014-01-28 12:00:00 with certid 193 (started 2009-06-23 12:00:00)
+  Latest start was 2009-06-23 12:00:00 with certid 193 (expires 2014-01-28 12:00:00)
+  Latest expiration 2021-12-15 08:00:00 with certid 123887 (started 2006-12-15 08:00:00)
+  Diff latest and earliest expiry: 2877 days, 20:00:00
+  Total Validity Period: 5479 days, 0:00:00
+  Possible roots certids: [123887]
+  Certids in group: [193, 106924, 123887, 138678, 287005]
+
+4 CA certs of 2048 bits
+ Total valid certs using this key also 4
+  Issuer Countries: ['ZA', 'US']
+  Issuer Orgs: ['Thawte Consulting cc', 'thawte, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['thawte, Inc.']
+  Earliest start was 2006-11-17 00:00:00 with certid 21 (expires 2020-12-30 23:59:59)
+  Earliest expiration 2020-12-30 23:59:59 with certid 21 (started 2006-11-17 00:00:00)
+  Latest start was 2006-11-17 00:00:00 with certid 21 (expires 2020-12-30 23:59:59)
+  Latest expiration 2036-07-16 23:59:59 with certid 983 (started 2006-11-17 00:00:00)
+**   Diff latest and earliest expiry: 5677 days, 0:00:00
+  Total Validity Period: 10834 days, 23:59:59
+  Possible roots certids: [983]
+  Certids in group: [21, 983, 1121, 4337]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['IL']
+  Issuer Orgs: ['StartCom Ltd.']
+  Subject Countries: ['IL']
+  Subject Orgs: ['StartCom Ltd.']
+  Earliest start was 2007-10-24 21:01:54 with certid 203926 (expires 2012-10-22 21:01:54)
+  Earliest expiration 2012-10-22 21:01:54 with certid 203926 (started 2007-10-24 21:01:54)
+  Latest start was 2007-10-24 21:01:55 with certid 784912 (expires 2017-10-24 21:01:55)
+  Latest expiration 2017-10-24 21:01:55 with certid 784912 (started 2007-10-24 21:01:55)
+**   Diff latest and earliest expiry: 1828 days, 0:00:01
+  Total Validity Period: 3653 days, 0:00:01
+  Certids in group: [203926, 784912]
+
+4 CA certs of 2048 bits
+ Total valid certs using this key also 4
+  Issuer Countries: ['US', 'SE']
+  Issuer Orgs: ['The USERTRUST Network', 'AddTrust AB']
+  Subject Countries: ['US']
+  Subject Orgs: ['The USERTRUST Network']
+  Earliest start was 1999-07-09 18:10:42 with certid 1775 (expires 2019-07-09 18:19:22)
+  Earliest expiration 2019-07-09 18:19:22 with certid 1775 (started 1999-07-09 18:10:42)
+  Latest start was 2005-06-07 08:09:10 with certid 3 (expires 2020-05-30 10:48:38)
+  Latest expiration 2020-05-30 10:48:38 with certid 3 (started 2005-06-07 08:09:10)
+**   Diff latest and earliest expiry: 325 days, 16:29:16
+  Total Validity Period: 7630 days, 16:37:56
+  Possible roots certids: [1775]
+  Certids in group: [3, 31, 209, 1775]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['FR']
+  Issuer Orgs: ['Certplus']
+  Subject Countries: ['FR']
+  Subject Orgs: ['Certplus']
+  Earliest start was 2008-10-23 00:00:00 with certid 712075 (expires 2018-10-23 00:00:00)
+  Earliest expiration 2018-10-23 00:00:00 with certid 712075 (started 2008-10-23 00:00:00)
+  Latest start was 2009-07-10 00:00:00 with certid 274543 (expires 2019-07-01 00:00:00)
+  Latest expiration 2019-07-01 00:00:00 with certid 274543 (started 2009-07-10 00:00:00)
+**   Diff latest and earliest expiry: 251 days, 0:00:00
+  Total Validity Period: 3903 days, 0:00:00
+  Certids in group: [274543, 712075]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['CH', 'IE']
+  Issuer Orgs: ['admin', 'Baltimore']
+  Subject Countries: ['CH']
+  Subject Orgs: ['admin']
+  Earliest start was 2006-01-25 13:36:19 with certid 152006 (expires 2016-01-25 12:36:19)
+  Earliest expiration 2013-11-02 13:22:36 with certid 151967 (started 2010-11-02 13:23:28)
+  Latest start was 2010-11-02 13:23:28 with certid 151967 (expires 2013-11-02 13:22:36)
+  Latest expiration 2016-01-25 12:36:19 with certid 152006 (started 2006-01-25 13:36:19)
+  Diff latest and earliest expiry: 813 days, 23:13:43
+  Total Validity Period: 3651 days, 23:00:00
+  Possible roots certids: [152006]
+  Certids in group: [151967, 152006]
+
+4 CA certs of 2048 bits
+ Total valid certs using this key also 4
+  Issuer Countries: ['SE', 'US', 'GB']
+  Issuer Orgs: ['COMODO CA Limited', 'The USERTRUST Network', 'AddTrust AB']
+  Subject Countries: ['GB']
+  Subject Orgs: ['COMODO CA Limited']
+  Earliest start was 2006-12-01 00:00:00 with certid 53 (expires 2020-05-30 10:48:38)
+  Earliest expiration 2020-05-30 10:48:38 with certid 53 (started 2006-12-01 00:00:00)
+  Latest start was 2010-02-11 00:00:00 with certid 759 (expires 2020-05-30 10:48:38)
+  Latest expiration 2029-12-31 23:59:59 with certid 26211 (started 2006-12-01 00:00:00)
+**   Diff latest and earliest expiry: 3502 days, 13:11:21
+  Total Validity Period: 8431 days, 23:59:59
+  Possible roots certids: [26211]
+  Certids in group: [53, 264, 759, 26211]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['The USERTRUST Network']
+  Subject Countries: ['US']
+**   Subject Orgs: ['Wotone Communications, Inc.', 'WoSign, Inc.']
+  Earliest start was 2006-10-03 00:00:00 with certid 578385 (expires 2019-07-09 18:19:22)
+  Earliest expiration 2019-07-09 18:19:22 with certid 4069 (started 2007-04-25 00:00:00)
+  Latest start was 2007-04-25 00:00:00 with certid 4069 (expires 2019-07-09 18:19:22)
+  Latest expiration 2019-07-09 18:19:22 with certid 4069 (started 2007-04-25 00:00:00)
+**   Diff latest and earliest expiry: 0:00:00
+  Total Validity Period: 4662 days, 18:19:22
+  Certids in group: [4069, 578385]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['GTE Corporation']
+  Subject Countries: ['BE']
+  Subject Orgs: ['Cybertrust']
+  Earliest start was 2006-02-24 16:08:00 with certid 79662 (expires 2013-02-24 23:59:00)
+  Earliest expiration 2013-02-24 23:59:00 with certid 79662 (started 2006-02-24 16:08:00)
+  Latest start was 2006-03-14 20:30:00 with certid 204 (expires 2013-03-14 23:59:00)
+  Latest expiration 2013-03-14 23:59:00 with certid 204 (started 2006-03-14 20:30:00)
+**   Diff latest and earliest expiry: 18 days, 0:00:00
+  Total Validity Period: 2575 days, 7:51:00
+  Certids in group: [204, 79662]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['The USERTRUST Network', 'Network Solutions L.L.C.']
+  Subject Countries: ['US']
+  Subject Orgs: ['Network Solutions L.L.C.']
+  Earliest start was 2006-12-01 00:00:00 with certid 25088 (expires 2020-05-30 10:48:38)
+  Earliest expiration 2020-05-30 10:48:38 with certid 25088 (started 2006-12-01 00:00:00)
+  Latest start was 2006-12-01 00:00:00 with certid 25088 (expires 2020-05-30 10:48:38)
+  Latest expiration 2029-12-31 23:59:59 with certid 29957 (started 2006-12-01 00:00:00)
+**   Diff latest and earliest expiry: 3502 days, 13:11:21
+  Total Validity Period: 8431 days, 23:59:59
+  Possible roots certids: [29957]
+  Certids in group: [25088, 29957, 182567]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: []
+  Issuer Orgs: []
+  Subject Countries: []
+  Subject Orgs: []
+  Earliest start was 2007-12-12 16:15:33 with certid 25741 (expires 2012-12-12 16:25:33)
+  Earliest expiration 2012-12-12 16:25:33 with certid 25741 (started 2007-12-12 16:15:33)
+  Latest start was 2010-06-08 13:46:50 with certid 31976 (expires 2015-06-08 13:56:50)
+  Latest expiration 2015-06-08 13:56:50 with certid 31976 (started 2010-06-08 13:46:50)
+**   Diff latest and earliest expiry: 907 days, 21:31:17
+  Total Validity Period: 2734 days, 21:41:17
+  Certids in group: [25741, 31976]
+
+4 CA certs of 2048 bits
+ Total valid certs using this key also 4
+  Issuer Countries: ['BE', 'US']
+  Issuer Orgs: ['Certipost s.a./n.v.', 'GTE Corporation']
+  Subject Countries: ['BE']
+  Subject Orgs: ['Certipost s.a./n.v.']
+  Earliest start was 2005-07-26 10:00:00 with certid 233837 (expires 2020-07-26 10:00:00)
+  Earliest expiration 2017-03-07 14:22:27 with certid 228762 (started 2007-03-21 14:22:50)
+  Latest start was 2008-09-17 14:57:50 with certid 206343 (expires 2018-08-13 23:59:00)
+  Latest expiration 2020-07-26 10:00:00 with certid 233837 (started 2005-07-26 10:00:00)
+  Diff latest and earliest expiry: 1236 days, 19:37:33
+  Total Validity Period: 5479 days, 0:00:00
+  Possible roots certids: [233837]
+  Certids in group: [206343, 228762, 233837, 282940]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['BE']
+  Issuer Orgs: ['GlobalSign nv-sa']
+  Subject Countries: []
+  Subject Orgs: ['Alpha']
+  Earliest start was 2007-04-11 12:00:00 with certid 234 (expires 2017-04-11 12:00:00)
+  Earliest expiration 2014-01-27 11:00:00 with certid 504 (started 2007-04-11 12:00:00)
+  Latest start was 2007-04-11 12:00:00 with certid 234 (expires 2017-04-11 12:00:00)
+  Latest expiration 2017-04-11 12:00:00 with certid 234 (started 2007-04-11 12:00:00)
+  Diff latest and earliest expiry: 1170 days, 1:00:00
+  Total Validity Period: 3653 days, 0:00:00
+  Certids in group: [234, 504, 2441]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['ES']
+  Issuer Orgs: ['IPS Certification Authority s.l. ipsCA']
+  Subject Countries: ['ES']
+  Subject Orgs: ['ips Certification Authority']
+  Earliest start was 2009-12-10 11:38:52 with certid 6743 (expires 2029-12-24 11:38:52)
+  Earliest expiration 2029-12-24 09:29:57 with certid 95693 (started 2010-09-20 09:29:57)
+  Latest start was 2010-09-20 09:29:57 with certid 95693 (expires 2029-12-24 09:29:57)
+  Latest expiration 2029-12-24 11:38:52 with certid 6743 (started 2009-12-10 11:38:52)
+  Diff latest and earliest expiry: 2:08:55
+  Total Validity Period: 7319 days, 0:00:00
+  Certids in group: [6743, 95693]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Equifax', 'GeoTrust Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['GeoTrust Inc.']
+  Earliest start was 2006-11-27 00:00:00 with certid 711 (expires 2018-08-21 16:15:00)
+  Earliest expiration 2018-08-21 15:08:31 with certid 1335 (started 2006-11-28 16:08:31)
+  Latest start was 2006-11-28 16:08:31 with certid 1335 (expires 2018-08-21 15:08:31)
+  Latest expiration 2036-07-16 23:59:59 with certid 170758 (started 2006-11-27 00:00:00)
+**   Diff latest and earliest expiry: 6539 days, 8:51:28
+  Total Validity Period: 10824 days, 23:59:59
+  Possible roots certids: [170758]
+  Certids in group: [711, 1335, 170758]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Entrust.net', 'SecureTrust Corporation']
+  Subject Countries: ['US']
+  Subject Orgs: ['SecureTrust Corporation']
+  Earliest start was 2006-10-01 05:00:00 with certid 7101 (expires 2013-11-26 18:25:48)
+  Earliest expiration 2013-11-23 18:09:16 with certid 7940 (started 2006-11-23 17:39:16)
+  Latest start was 2006-11-23 17:39:16 with certid 7940 (expires 2013-11-23 18:09:16)
+  Latest expiration 2029-12-31 19:40:55 with certid 3749 (started 2006-11-07 19:31:18)
+**   Diff latest and earliest expiry: 5882 days, 1:31:39
+  Total Validity Period: 8492 days, 14:40:55
+  Possible roots certids: [3749]
+  Certids in group: [3749, 7101, 7940]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: []
+  Issuer Orgs: ['Dell Inc.']
+  Subject Countries: []
+  Subject Orgs: ['Dell Inc.']
+  Earliest start was 2010-06-22 16:46:02 with certid 71815 (expires 2015-06-22 16:56:02)
+  Earliest expiration 2015-06-22 16:56:02 with certid 71815 (started 2010-06-22 16:46:02)
+  Latest start was 2010-08-27 16:44:19 with certid 24983 (expires 2015-08-27 16:54:19)
+  Latest expiration 2015-08-27 16:54:19 with certid 24983 (started 2010-08-27 16:44:19)
+**   Diff latest and earliest expiry: 65 days, 23:58:17
+  Total Validity Period: 1892 days, 0:08:17
+  Certids in group: [24983, 71815]
+
+4 CA certs of 2048 bits
+ Total valid certs using this key also 4
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Entrust.net', 'GTE Corporation', 'DigiCert Inc']
+  Subject Countries: ['US']
+  Subject Orgs: ['DigiCert Inc']
+  Earliest start was 2006-10-01 05:00:00 with certid 80 (expires 2014-07-26 18:15:15)
+  Earliest expiration 2014-07-22 15:57:27 with certid 2377 (started 2006-12-22 15:27:27)
+  Latest start was 2010-01-13 19:20:32 with certid 10110 (expires 2015-09-30 18:19:47)
+  Latest expiration 2031-11-10 00:00:00 with certid 3564 (started 2006-11-10 00:00:00)
+**   Diff latest and earliest expiry: 6319 days, 8:02:33
+  Total Validity Period: 9170 days, 19:00:00
+  Possible roots certids: [3564]
+  Certids in group: [80, 2377, 3564, 10110]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['BE']
+  Issuer Orgs: ['GlobalSign nv-sa']
+  Subject Countries: ['BE']
+  Subject Orgs: ['GlobalSign nv-sa']
+  Earliest start was 2003-12-16 13:00:00 with certid 16193 (expires 2014-01-27 11:00:00)
+  Earliest expiration 2014-01-27 11:00:00 with certid 16193 (started 2003-12-16 13:00:00)
+  Latest start was 2003-12-16 13:00:00 with certid 16193 (expires 2014-01-27 11:00:00)
+  Latest expiration 2028-01-28 11:00:00 with certid 25743 (started 2003-12-16 13:00:00)
+**   Diff latest and earliest expiry: 5114 days, 0:00:00
+  Total Validity Period: 8808 days, 22:00:00
+  Certids in group: [16193, 25743]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['DK', 'US']
+  Issuer Orgs: ['Entrust.net', 'TDC Internet']
+  Subject Countries: ['DK']
+  Subject Orgs: ['TDC Internet']
+  Earliest start was 2001-04-05 16:33:17 with certid 86511 (expires 2021-04-05 17:03:17)
+  Earliest expiration 2011-10-12 19:18:52 with certid 74526 (started 2006-10-12 18:48:52)
+  Latest start was 2009-10-22 14:07:22 with certid 73138 (expires 2014-09-06 04:00:00)
+  Latest expiration 2021-04-05 17:03:17 with certid 86511 (started 2001-04-05 16:33:17)
+  Diff latest and earliest expiry: 3462 days, 21:44:25
+  Total Validity Period: 7305 days, 0:30:00
+  Possible roots certids: [86511]
+  Certids in group: [73138, 74526, 86511]
+
+7 CA certs of 2048 bits
+ Total valid certs using this key also 7
+  Issuer Countries: ['US']
+  Issuer Orgs: ['VeriSign, Inc.']
+  Subject Countries: ['US']
+  Subject Orgs: ['VeriSign, Inc.']
+  Earliest start was 2006-11-08 00:00:00 with certid 785 (expires 2021-11-07 23:59:59)
+  Earliest expiration 2021-11-07 23:59:59 with certid 785 (started 2006-11-08 00:00:00)
+  Latest start was 2006-11-08 00:00:00 with certid 785 (expires 2021-11-07 23:59:59)
+  Latest expiration 2036-07-16 23:59:59 with certid 3220 (started 2006-11-08 00:00:00)
+**   Diff latest and earliest expiry: 5365 days, 0:00:00
+  Total Validity Period: 10843 days, 23:59:59
+  Possible roots certids: [3220]
+  Certids in group: [785, 1580, 2859, 3151, 3220, 27720, 29450]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Entrust.net']
+  Subject Countries: ['US']
+  Subject Orgs: ['DigiCert Inc']
+  Earliest start was 2006-07-14 17:10:28 with certid 5270 (expires 2014-07-14 17:40:28)
+  Earliest expiration 2012-01-17 19:18:47 with certid 1327 (started 2009-02-17 18:48:47)
+  Latest start was 2009-02-17 18:48:47 with certid 1327 (expires 2012-01-17 19:18:47)
+  Latest expiration 2014-07-14 17:40:28 with certid 5270 (started 2006-07-14 17:10:28)
+  Diff latest and earliest expiry: 908 days, 22:21:41
+  Total Validity Period: 2922 days, 0:30:00
+  Certids in group: [1327, 3323, 5270]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['UK', 'US']
+  Issuer Orgs: ['GTE Corporation', 'Vodafone Group']
+  Subject Countries: ['UK']
+  Subject Orgs: ['Vodafone Group']
+  Earliest start was 2006-11-29 12:00:00 with certid 232437 (expires 2021-12-31 12:00:00)
+  Earliest expiration 2015-12-03 14:54:39 with certid 103510 (started 2008-12-03 14:54:59)
+  Latest start was 2008-12-03 14:54:59 with certid 103510 (expires 2015-12-03 14:54:39)
+  Latest expiration 2021-12-31 12:00:00 with certid 232437 (started 2006-11-29 12:00:00)
+  Diff latest and earliest expiry: 2219 days, 21:05:21
+  Total Validity Period: 5511 days, 0:00:00
+  Certids in group: [103510, 232437]
+
+4 CA certs of 2048 bits
+ Total valid certs using this key also 4
+  Issuer Countries: ['US', 'SE']
+  Issuer Orgs: ['The USERTRUST Network', 'AddTrust AB']
+  Subject Countries: ['US']
+  Subject Orgs: ['The USERTRUST Network']
+  Earliest start was 1999-06-24 18:57:21 with certid 2007 (expires 2019-06-24 19:06:30)
+  Earliest expiration 2019-06-24 19:06:30 with certid 2007 (started 1999-06-24 18:57:21)
+  Latest start was 2005-06-07 08:09:10 with certid 54 (expires 2020-05-30 10:48:38)
+  Latest expiration 2020-05-30 10:48:38 with certid 54 (started 2005-06-07 08:09:10)
+**   Diff latest and earliest expiry: 340 days, 15:42:08
+  Total Validity Period: 7645 days, 15:51:17
+  Possible roots certids: [2007]
+  Certids in group: [54, 2007, 11803, 448965]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['FR']
+  Issuer Orgs: ['PM/SGDN']
+  Subject Countries: ['FR']
+  Subject Orgs: ['Secteur public \\xC3\\x89cologie D\\xC3\\xA9veloppement et Am\\xC3\\xA9nagement durables']
+  Earliest start was 2009-09-03 12:00:00 with certid 144037 (expires 2019-10-05 12:00:00)
+  Earliest expiration 2019-10-05 12:00:00 with certid 144037 (started 2009-09-03 12:00:00)
+  Latest start was 2009-12-14 16:00:00 with certid 77147 (expires 2019-10-05 15:00:00)
+  Latest expiration 2019-10-05 15:00:00 with certid 77147 (started 2009-12-14 16:00:00)
+**   Diff latest and earliest expiry: 3:00:00
+  Total Validity Period: 3684 days, 3:00:00
+  Certids in group: [77147, 144037]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['BE']
+  Issuer Orgs: ['GlobalSign nv-sa']
+  Subject Countries: ['BE']
+  Subject Orgs: ['GlobalSign nv-sa']
+  Earliest start was 1998-09-01 12:00:00 with certid 257 (expires 2014-01-28 12:00:00)
+  Earliest expiration 2014-01-28 12:00:00 with certid 257 (started 1998-09-01 12:00:00)
+  Latest start was 1998-09-01 12:00:00 with certid 257 (expires 2014-01-28 12:00:00)
+  Latest expiration 2028-01-28 12:00:00 with certid 498 (started 1998-09-01 12:00:00)
+**   Diff latest and earliest expiry: 5113 days, 0:00:00
+  Total Validity Period: 10741 days, 0:00:00
+  Possible roots certids: [257, 498]
+  Certids in group: [257, 498]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['ES']
+  Issuer Orgs: ['Agencia Catalana de Certificacio (NIF Q-0801176-I)']
+  Subject Countries: ['ES']
+  Subject Orgs: ['Agencia Catalana de Certificacio (NIF Q-0801176-I)']
+  Earliest start was 2005-05-03 09:36:18 with certid 225009 (expires 2013-05-03 09:36:18)
+  Earliest expiration 2013-05-03 09:36:18 with certid 225009 (started 2005-05-03 09:36:18)
+  Latest start was 2009-04-17 09:47:19 with certid 239896 (expires 2019-04-16 21:59:59)
+  Latest expiration 2019-04-16 21:59:59 with certid 239896 (started 2009-04-17 09:47:19)
+**   Diff latest and earliest expiry: 2174 days, 12:23:41
+  Total Validity Period: 5096 days, 12:23:41
+  Certids in group: [225009, 239896]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['CN', 'US']
+  Issuer Orgs: ['Entrust.net', 'CNNIC']
+  Subject Countries: ['CN']
+  Subject Orgs: ['CNNIC SSL']
+  Earliest start was 2007-05-11 14:03:22 with certid 56610 (expires 2012-03-01 05:00:00)
+  Earliest expiration 2012-03-01 05:00:00 with certid 56610 (started 2007-05-11 14:03:22)
+  Latest start was 2010-01-28 03:03:21 with certid 11595 (expires 2017-04-16 05:00:40)
+  Latest expiration 2017-04-16 05:00:40 with certid 11595 (started 2010-01-28 03:03:21)
+**   Diff latest and earliest expiry: 1872 days, 0:00:40
+  Total Validity Period: 3627 days, 14:57:18
+  Certids in group: [11595, 56610]
+
+4 CA certs of 2048 bits
+ Total valid certs using this key also 4
+  Issuer Countries: ['US', 'SE']
+  Issuer Orgs: ['The USERTRUST Network', 'AddTrust AB']
+  Subject Countries: ['SE']
+  Subject Orgs: ['AddTrust AB']
+  Earliest start was 2000-05-30 10:48:38 with certid 55 (expires 2020-05-30 10:48:38)
+  Earliest expiration 2019-06-24 19:06:30 with certid 57152 (started 2005-06-07 08:09:10)
+  Latest start was 2005-06-07 08:09:10 with certid 98 (expires 2019-07-09 18:19:22)
+  Latest expiration 2020-05-30 10:48:38 with certid 55 (started 2000-05-30 10:48:38)
+  Diff latest and earliest expiry: 340 days, 15:42:08
+  Total Validity Period: 7305 days, 0:00:00
+  Possible roots certids: [55]
+  Certids in group: [55, 98, 57152, 278133]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['FR']
+  Issuer Orgs: ['PM/SGDN']
+  Subject Countries: ['FR']
+  Subject Orgs: ['Ministere en charge des affaires sanitaires et sociales']
+  Earliest start was 2008-11-20 12:00:00 with certid 155773 (expires 2018-10-30 12:00:00)
+  Earliest expiration 2018-10-30 12:00:00 with certid 155773 (started 2008-11-20 12:00:00)
+  Latest start was 2010-04-22 12:00:00 with certid 158329 (expires 2018-10-30 13:00:00)
+  Latest expiration 2018-10-30 13:00:00 with certid 158329 (started 2010-04-22 12:00:00)
+**   Diff latest and earliest expiry: 1:00:00
+  Total Validity Period: 3631 days, 1:00:00
+  Certids in group: [155773, 158329]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['JP']
+  Issuer Orgs: ['ValiCert, Inc.', 'SECOM Trust.net']
+  Subject Countries: ['JP']
+  Subject Orgs: ['SECOM Trust.net']
+  Earliest start was 2003-09-30 04:20:49 with certid 4207 (expires 2023-09-30 04:20:49)
+  Earliest expiration 2015-03-16 02:34:42 with certid 4824 (started 2005-03-16 02:34:42)
+  Latest start was 2010-01-29 00:49:31 with certid 8706 (expires 2019-06-25 00:49:31)
+  Latest expiration 2023-09-30 04:20:49 with certid 4207 (started 2003-09-30 04:20:49)
+  Diff latest and earliest expiry: 3120 days, 1:46:07
+  Total Validity Period: 7305 days, 0:00:00
+  Possible roots certids: [4207]
+  Certids in group: [4207, 4824, 8706]
+
+3 CA certs of 2048 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US', 'SE', 'GB']
+  Issuer Orgs: ['COMODO CA Limited', 'The USERTRUST Network', 'AddTrust AB']
+  Subject Countries: ['GB']
+  Subject Orgs: ['COMODO CA Limited']
+  Earliest start was 2006-12-01 00:00:00 with certid 59861 (expires 2019-07-09 18:19:22)
+  Earliest expiration 2019-07-09 18:19:22 with certid 59861 (started 2006-12-01 00:00:00)
+  Latest start was 2007-01-01 00:00:00 with certid 59860 (expires 2020-05-30 10:48:38)
+  Latest expiration 2020-05-30 10:48:38 with certid 59860 (started 2007-01-01 00:00:00)
+**   Diff latest and earliest expiry: 325 days, 16:29:16
+  Total Validity Period: 4929 days, 10:48:38
+  Certids in group: [59860, 59861, 59862]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Entrust.net']
+  Subject Countries: ['US']
+  Subject Orgs: ['Trusted Secure Certificate Authority']
+  Earliest start was 2007-06-28 18:14:35 with certid 3115 (expires 2012-10-28 18:44:35)
+  Earliest expiration 2012-10-28 18:44:35 with certid 3115 (started 2007-06-28 18:14:35)
+  Latest start was 2009-10-26 14:16:08 with certid 9227 (expires 2013-06-26 04:00:00)
+  Latest expiration 2013-06-26 04:00:00 with certid 9227 (started 2009-10-26 14:16:08)
+**   Diff latest and earliest expiry: 240 days, 9:15:25
+  Total Validity Period: 2189 days, 9:45:25
+  Certids in group: [3115, 9227]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Entrust.net']
+  Subject Countries: ['US']
+  Subject Orgs: ['Entrust, Inc.']
+  Earliest start was 2008-08-25 18:14:26 with certid 2846 (expires 2018-08-25 18:44:26)
+  Earliest expiration 2016-01-07 18:54:10 with certid 8659 (started 2009-01-07 18:24:10)
+  Latest start was 2009-01-07 18:24:10 with certid 8659 (expires 2016-01-07 18:54:10)
+  Latest expiration 2018-08-25 18:44:26 with certid 2846 (started 2008-08-25 18:14:26)
+  Diff latest and earliest expiry: 960 days, 23:50:16
+  Total Validity Period: 3652 days, 0:30:00
+  Certids in group: [2846, 8659]
+
+2 CA certs of 2048 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US', 'SE']
+  Issuer Orgs: ['The USERTRUST Network', 'AddTrust AB']
+  Subject Countries: ['SE']
+  Subject Orgs: ['AddTrust Sweden AB']
+  Earliest start was 2005-05-13 00:00:00 with certid 695107 (expires 2012-05-12 23:59:59)
+  Earliest expiration 2012-05-12 23:59:59 with certid 695107 (started 2005-05-13 00:00:00)
+  Latest start was 2005-07-01 00:00:00 with certid 104609 (expires 2012-06-30 23:59:59)
+  Latest expiration 2012-06-30 23:59:59 with certid 104609 (started 2005-07-01 00:00:00)
+**   Diff latest and earliest expiry: 49 days, 0:00:00
+  Total Validity Period: 2605 days, 23:59:59
+  Certids in group: [104609, 695107]
+
+2 CA certs of 2047 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['KR']
+  Issuer Orgs: ['Government of Korea']
+  Subject Countries: ['KR']
+  Subject Orgs: ['Government of Korea']
+  Earliest start was 2008-04-28 09:31:09 with certid 8085 (expires 2012-03-28 09:31:09)
+  Earliest expiration 2012-03-28 09:31:09 with certid 8085 (started 2008-04-28 09:31:09)
+  Latest start was 2009-12-23 11:10:38 with certid 8089 (expires 2014-12-23 11:10:38)
+  Latest expiration 2014-12-23 11:10:38 with certid 8089 (started 2009-12-23 11:10:38)
+**   Diff latest and earliest expiry: 1000 days, 1:39:29
+  Total Validity Period: 2430 days, 1:39:29
+  Certids in group: [8085, 8089]
+
+3 CA certs of 1024 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['VISA']
+  Subject Countries: ['US']
+  Subject Orgs: ['VISA']
+  Earliest start was 2004-07-01 18:07:28 with certid 325505 (expires 2014-06-30 18:07:28)
+  Earliest expiration 2014-06-30 18:07:28 with certid 325505 (started 2004-07-01 18:07:28)
+  Latest start was 2005-03-02 19:04:18 with certid 5234 (expires 2015-03-01 19:04:18)
+  Latest expiration 2015-03-01 19:04:18 with certid 5234 (started 2005-03-02 19:04:18)
+**   Diff latest and earliest expiry: 244 days, 0:56:50
+  Total Validity Period: 3895 days, 0:56:50
+  Certids in group: [5234, 325505, 386628]
+
+2 CA certs of 1024 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['DE']
+  Issuer Orgs: ['TC TrustCenter for Security in Data Networks GmbH', 'TC TrustCenter GmbH']
+  Subject Countries: ['DE']
+  Subject Orgs: ['TC TrustCenter for Security in Data Networks GmbH']
+  Earliest start was 1998-03-09 11:59:59 with certid 107072 (expires 2011-01-01 11:59:59)
+  Earliest expiration 2011-01-01 11:59:59 with certid 107072 (started 1998-03-09 11:59:59)
+  Latest start was 2007-11-26 16:01:23 with certid 216745 (expires 2025-12-31 22:29:57)
+  Latest expiration 2025-12-31 22:29:57 with certid 216745 (started 2007-11-26 16:01:23)
+**   Diff latest and earliest expiry: 5478 days, 10:29:58
+  Total Validity Period: 10159 days, 10:29:58
+  Possible roots certids: [107072]
+  Certids in group: [107072, 216745]
+
+2 CA certs of 1024 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['IL']
+  Issuer Orgs: ['ComSign']
+  Subject Countries: ['IL']
+  Subject Orgs: ['ComSign Ltd.']
+  Earliest start was 2004-06-15 14:56:31 with certid 122820 (expires 2014-06-14 14:56:31)
+  Earliest expiration 2014-06-14 14:56:31 with certid 122820 (started 2004-06-15 14:56:31)
+  Latest start was 2010-03-10 11:33:52 with certid 215215 (expires 2020-12-31 21:05:25)
+  Latest expiration 2020-12-31 21:05:25 with certid 215215 (started 2010-03-10 11:33:52)
+**   Diff latest and earliest expiry: 2392 days, 6:08:54
+  Total Validity Period: 6043 days, 6:08:54
+  Certids in group: [122820, 215215]
+
+2 CA certs of 1024 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['Cybertrust, Inc', 'GTE Corporation']
+  Subject Countries: ['JP']
+  Subject Orgs: ['Cybertrust Japan Co., Ltd.']
+  Earliest start was 2008-02-19 18:34:31 with certid 22900 (expires 2015-03-19 18:34:09)
+  Earliest expiration 2015-03-19 18:34:09 with certid 22900 (started 2008-02-19 18:34:31)
+  Latest start was 2008-02-20 12:00:00 with certid 358822 (expires 2015-03-20 12:00:00)
+  Latest expiration 2015-03-20 12:00:00 with certid 358822 (started 2008-02-20 12:00:00)
+**   Diff latest and earliest expiry: 17:25:51
+  Total Validity Period: 2585 days, 17:25:29
+  Certids in group: [22900, 358822]
+
+2 CA certs of 1024 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['TW', 'US']
+  Issuer Orgs: ['TAIWAN-CA', 'GTE Corporation']
+  Subject Countries: ['TW']
+  Subject Orgs: ['TAIWAN-CA.COM Inc.']
+  Earliest start was 2009-10-07 17:04:02 with certid 106454 (expires 2016-09-30 17:03:24)
+  Earliest expiration 2013-02-22 15:59:59 with certid 727182 (started 2010-02-22 09:53:41)
+  Latest start was 2010-02-22 09:53:41 with certid 727182 (expires 2013-02-22 15:59:59)
+  Latest expiration 2016-09-30 17:03:24 with certid 106454 (started 2009-10-07 17:04:02)
+  Diff latest and earliest expiry: 1316 days, 1:03:25
+  Total Validity Period: 2549 days, 23:59:22
+  Certids in group: [106454, 727182]
+
+3 CA certs of 1024 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['US']
+  Issuer Orgs: ['VeriSign, Inc.']
+  Subject Countries: []
+  Subject Orgs: ['VeriSign Trust Network']
+  Earliest start was 1997-04-17 00:00:00 with certid 148 (expires 2016-10-24 23:59:59)
+  Earliest expiration 2011-10-24 23:59:59 with certid 219 (started 1997-04-17 00:00:00)
+  Latest start was 1997-04-17 00:00:00 with certid 148 (expires 2016-10-24 23:59:59)
+  Latest expiration 2016-10-24 23:59:59 with certid 148 (started 1997-04-17 00:00:00)
+  Diff latest and earliest expiry: 1827 days, 0:00:00
+  Total Validity Period: 7130 days, 23:59:59
+  Certids in group: [148, 219, 2120]
+
+2 CA certs of 1024 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['VeriSign, Inc.']
+  Subject Countries: []
+  Subject Orgs: ['VeriSign, Inc.']
+  Earliest start was 2001-10-30 00:00:00 with certid 124278 (expires 2016-10-29 23:59:59)
+  Earliest expiration 2011-10-29 23:59:59 with certid 137603 (started 2001-10-30 00:00:00)
+  Latest start was 2001-10-30 00:00:00 with certid 124278 (expires 2016-10-29 23:59:59)
+  Latest expiration 2016-10-29 23:59:59 with certid 124278 (started 2001-10-30 00:00:00)
+  Diff latest and earliest expiry: 1827 days, 0:00:00
+  Total Validity Period: 5478 days, 23:59:59
+  Certids in group: [124278, 137603]
+
+2 CA certs of 1024 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['US']
+  Issuer Orgs: ['GTE Corporation']
+  Subject Countries: ['JP']
+  Subject Orgs: ['SECOM Trust.net']
+  Earliest start was 2008-03-19 14:41:06 with certid 2207 (expires 2012-05-31 13:40:24)
+  Earliest expiration 2012-05-31 13:40:24 with certid 2207 (started 2008-03-19 14:41:06)
+  Latest start was 2010-02-16 20:07:13 with certid 2159 (expires 2016-05-31 19:05:50)
+  Latest expiration 2016-05-31 19:05:50 with certid 2159 (started 2010-02-16 20:07:13)
+**   Diff latest and earliest expiry: 1461 days, 5:25:26
+  Total Validity Period: 2995 days, 4:24:44
+  Certids in group: [2159, 2207]
+
+2 CA certs of 1024 bits
+ Total valid certs using this key also 2
+  Issuer Countries: []
+  Issuer Orgs: ['ValiCert, Inc.']
+  Subject Countries: []
+  Subject Orgs: ['RSA Security Inc.']
+  Earliest start was 2002-04-30 15:30:19 with certid 24846 (expires 2019-04-30 09:21:55)
+  Earliest expiration 2019-04-30 09:21:55 with certid 24846 (started 2002-04-30 15:30:19)
+  Latest start was 2005-05-02 17:34:48 with certid 6956 (expires 2019-04-30 09:24:00)
+  Latest expiration 2019-04-30 09:24:00 with certid 6956 (started 2005-05-02 17:34:48)
+**   Diff latest and earliest expiry: 0:02:05
+  Total Validity Period: 6208 days, 17:53:41
+  Certids in group: [6956, 24846]
+
+3 CA certs of 1024 bits
+ Total valid certs using this key also 3
+  Issuer Countries: ['ZA', 'US']
+  Issuer Orgs: ['VeriSign, Inc.', 'Thawte Consulting cc']
+  Subject Countries: ['ZA']
+  Subject Orgs: ['Thawte Consulting (Pty) Ltd.']
+  Earliest start was 2004-05-13 00:00:00 with certid 419 (expires 2014-05-12 23:59:59)
+  Earliest expiration 2014-05-12 23:59:59 with certid 419 (started 2004-05-13 00:00:00)
+  Latest start was 2004-05-13 00:00:00 with certid 419 (expires 2014-05-12 23:59:59)
+  Latest expiration 2015-05-12 23:59:59 with certid 5568 (started 2004-05-13 00:00:00)
+**   Diff latest and earliest expiry: 365 days, 0:00:00
+  Total Validity Period: 4016 days, 23:59:59
+  Certids in group: [419, 5568, 12381]
+
+2 CA certs of 1024 bits
+ Total valid certs using this key also 2
+  Issuer Countries: ['DE']
+  Issuer Orgs: ['TC TrustCenter for Security in Data Networks GmbH', 'TC TrustCenter GmbH']
+  Subject Countries: ['DE']
+  Subject Orgs: ['TC TrustCenter for Security in Data Networks GmbH']
+  Earliest start was 1998-03-09 11:59:59 with certid 94177 (expires 2011-01-01 11:59:59)
+  Earliest expiration 2011-01-01 11:59:59 with certid 94177 (started 1998-03-09 11:59:59)
+  Latest start was 2007-11-06 15:59:59 with certid 223842 (expires 2025-12-31 22:59:59)
+  Latest expiration 2025-12-31 22:59:59 with certid 223842 (started 2007-11-06 15:59:59)
+**   Diff latest and earliest expiry: 5478 days, 11:00:00
+  Total Validity Period: 10159 days, 11:00:00
+  Possible roots certids: [94177]
+  Certids in group: [94177, 223842]
+

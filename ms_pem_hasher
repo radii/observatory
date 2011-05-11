@@ -1,0 +1,15 @@
+#!/bin/sh
+
+for file in *.pem ; do 
+  h=`openssl x509 -hash -in $file -noout`.0
+  if [ -f $h ] ; then 
+    other=`ls -l $h | cut -d' ' -f 11`
+    echo $file conflicts with $other
+    openssl x509 -in $file -noout -text > /tmp/1
+    openssl x509 -in $other -noout -text > /tmp/2
+    #diff -u /tmp/{1,2}
+
+  else 
+    ln -s $file $h 
+  fi
+done

@@ -1,0 +1,15 @@
+#!/bin/bash
+# Get some progress numbers for our scans
+TMPFILE=/tmp/monitor$$
+for h in ssl-survey{2,3}.eff.org ; do
+  echo $h :
+  ssh root@$h 'for d in /home/scan/* ; do $d/stats ; done'
+done | tee $TMPFILE
+
+echo -n total "units: "
+expr `cat $TMPFILE | grep units | cut -f1 -d' ' |sed "s/$/ + /"` 0 
+
+#echo -n total "certs: "
+#expr `cat $TMPFILE | grep units | cut -f3 -d' ' |sed "s/$/ + /"` 0 
+
+rm $TMPFILE

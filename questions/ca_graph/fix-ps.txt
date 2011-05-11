@@ -1,0 +1,11 @@
+Thanks to an anonymous Entrust employee:
+
+I ran gs with:
+
+  gs -dDEVICEWIDTHPOINTS=1792 -dDEVICEHEIGHTPOINTS=2232 -sDEVICE=pdfwrite
+  -sOutputFile=map-of-CAs.pdf map-of-CAs.ps
+
+  1792 is 36+1756 and 2232 is 36+2196, where 36, 1756 and 2196 are taken from
+  the boundingbox in the ps file.
+
+

@@ -1,0 +1,33 @@
+- IP signing issuers, RFC 1918 IP signing Issuers & their roots
+- # of issuers signed per Root CAs
+- Analysis of RSA key modulus
+	- population - are they chosen at random
+	- are any modulus' prime (i.e. not keys!)
+	- funny parameters
+- Unqualified name signing issuers
+- Key reuse by CAs
+	- why
+	- how does this extend key usage
+	- when key usage is extended, will old signatures still work
+	- CA keys vs. subordinate keys
+	 - are CA keys exposed like subordinate keys!?!
+	- how
+- Issuers by country
+- Leaves by issuer
+- Leaves by root
+- Government CAs
+- Self signed attacks by Subject alternate names
+- Widely used non-standard CAs
+- weakest certs
+- oldest certs
+- weirdest certs
+	- most names
+	- longest subject
+	- funniest characters
+	- weirdest attributes
+- What certs have funny chars / nulls / non-standard bytes
+- Are their any non-minimal UTF-8 encodings in valid certs
+What would attacks look like
+- from one country - signing another
+- from 'government' signing commercial or other names
+- from companies - signing other companies

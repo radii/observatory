@@ -1,0 +1,4 @@
+This directory holds the PEM representations of certs you have recently been 
+dealing with. If you inspect a .results file for example, you will probably
+find some .pem files in here from that stream. These files can be deleted
+periodically, but can be useful if you need to go back and check something.

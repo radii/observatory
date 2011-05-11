@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Like inspect, but only print the leaf cert
+
+target=`basename $1`
+python ConvertStreamToPem.py $1
+for f in certs/$target* ; do
+  echo openssl x509 -noout -text -in $f
+  openssl x509 -noout -text -in $f
+  exit 0
+done
+

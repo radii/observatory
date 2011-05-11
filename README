@@ -1,0 +1,101 @@
+The SSL Observatory is still a work in progress.
+
+WARNING: This code is not suitable for production systems, it is experimental.
+For example, low righs users can interfere with the scripts this thing uses, and
+database use is done without privilege seperation, tmp file access is willy nilly 
+and we frequently run with privileges we don't need... so be careful.
+
+This is the complicated codebase of scripts that we used to collect and
+process the EFF SSL Observatory dataset.  The most important top-level scripts
+are as follows:
+
+scan/          -- scripts for scanning IPv4 space and recording TCP port 443
+                  responses in .results files (you also get our .results files
+                  via bittorrent from https://www.eff.org/observatory)
+
+dbconnect.py   -- make yourself a MySQL database for the SSL certificates,
+                  then customise this file with your username, password, and
+                  database name
+
+launch_parsers -- edit this to set the path where your .results files reside,
+                  then run it to build the raw certs* tables and the valid_certs
+                  table of valid certificates 
+
+transvalid.py  -- once you have a valid_certs table, run this to compute a more
+                  sophisticated notion of which certs are valid in real
+                  browsers; this updates the raw* tables
+
+rebuild.sh     -- run this to build all the important tables in the neatest
+                  and most correct way, once transvalidity has been evaluated
+
+The observatory stores data in MySQL, which you will need to have installed.
+The mysql program will also need to be in your path. We recommend you set
+the following values in your ~/.my.cnf file (personal mysql configuration file)
+
+in the [client] section of ~/.my.cnf (template is often installed in 
+/etc/my.cnf or /etc/mysql/my.cnf)
+
+user=YOUR_DB_USERNAME_WITH_ADMIN_RIGHTS
+host=localhost
+password=YOUR_DB_PASSWORD
+database=observatory
+
+Note that keeping passwords in your home directory might not be a great idea.
+
+Once you install MySQL, you will need to establish a username and password as 
+well as perform a "create database observatory;" (or whatever name you like)
+so that you will have somewhere to put your data in mysql.
+ 
+You will then need to make some configuration adjustments to the observatory's
+scripts in order help them find your data and know where to import it. The 
+README.schema file has some tips about this, and explains a bit about what you
+will actually find in the tables once the data is imported.
+
+After you have a working import of the data, you may want to explore it with
+queries, the questions subdirectory contains example sql and python queries.
+Understanding these can help you craft your own. The data definately has some
+quirks, it is frequently useful to use limits on simple queries in order to
+get an example of what you are looking for. For example:
+
+jesse@floop:~/sslscanner$ mysql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1350
+Server version: 5.1.41-3ubuntu12.8 (Ubuntu)
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select distinct subject from all_certs where moz_valid="Yes" limit 10;
++-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------+
+| subject
+                                                |
++-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------+
+|  C=US/postalCode=20770, ST=MD, L=Greenbelt/streetAddress=Suite 140/streetAddress=6305 Ivy lane, O=NFRC, OU=web, OU=Sec
+ure Link SSL, CN=mail.nfrc.org                  |
+|  C=US, O=Network Solutions L.L.C., CN=Network Solutions Certificate Authority
+                                                |
+|  C=US, ST=UT, L=Salt Lake City, O=The USERTRUST Network, OU=http://www.usertrust.com, CN=UTN-USERFirst-Hardware
+                                                |
+|  O=mail.nscharter.com, OU=Domain Control Validated, CN=mail.nscharter.com
+                                                |
+|  C=US, ST=Arizona, L=Scottsdale, O=GoDaddy.com, Inc., OU=http://certificates.godaddy.com/repository, CN=Go Daddy Secur
+e Certification Authority/serialNumber=07969287 |
+|  C=US, O=The Go Daddy Group, Inc., OU=Go Daddy Class 2 Certification Authority
+                                                |
+|  OU=Domain Control Validated, OU=Hosted by Register.com, OU=PositiveSSL, CN=mail.rdclient.net
+                                                |
+|  C=US, O=Register.com, CN=Register.com CA SSL Services (DV)
+                                                |
+|  C=US, ST=Massachusetts, L=westford, O=Town of westford, CN=ipass.westford-ma.gov
+                                                |
+|  CN=WyattHome.homeserver.com, OU=Domain Control Validated
+                                                |
++-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------+
+10 rows in set (0.00 sec)
+
+mysql>

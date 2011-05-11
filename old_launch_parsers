@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Import data from raw .results files.  
+
+export RESULTS_ROOT=/home/jesse/data/sslscanner
+export LOGDIR=/tmp
+
+#cd /home/pde/sslscanner
+
+# This was sort-of optimised for 4 modern hyperthreaded CPU cores, but
+# hackparse keeps getting more computationally expensive.  YMMV.
+
+NUM_THRDS=5
+
+for n in 0 1 2 3 4 5 6 7 8 9 10 11 0b 1b 4b 9b 12 13 14 ; do 
+  echo launching parser for results portion $n
+  python ./hackparse.py --table certs$n --create $RESULTS_ROOT$n | gzip -c > $LOGDIR/scanner$n.txt.gz & 
+  while [ `ps waux | grep -v grep | grep hackpa | wc -l` -ge $NUM_THRDS ] ; do
+    sleep 10s
+  done
+done
+
+./once python python ./stitch_tables.py --into valid_certs certs{0,1,2,3,4,5,6,7,8,9,10,11,0b,1b,4b,9b,12,13,14}

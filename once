@@ -1,0 +1,15 @@
+#!/bin/sh
+if [ $# -lt 2 ] ; then
+	echo usage: `basename $0` '<command to wait on> <command to execute>'
+	exit 1
+fi
+
+while ! ps ax | grep -v grep | grep -v `basename $0` | grep -q $1 ; do
+	sleep 1s
+done
+
+while ps ax | grep -v grep | grep -v `basename $0` | grep -q $1 ; do
+	sleep 5s
+done
+shift
+exec $@

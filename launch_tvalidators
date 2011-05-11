@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -x
+
+export RESULTS_ROOT=/home/jesse/dec_2010/scan/
+
+if ! [ -d "$RESULTS_ROOT" ] ; then
+  echo RESULTS_ROOT $RESULTS_ROOT is not a directory
+  exit 1
+fi
+
+# This was sort-of optimised for 4 modern hyperthreaded CPU cores, but
+# hackparse keeps getting more computationally expensive.  YMMV.
+
+# XXX replace these crude timings with some load monitoring to launch new
+# parsing tasks when others are done.  Should save a few hours each time!
+
+NUM_THRDS=4
+
+cd $RESULTS_ROOT
+TARGETS=`echo *.x.x.x`
+echo $TARGETS
+if echo $targets | grep -q \* ; then
+  echo no targets found
+  exit 1
+fi
+cd ~-
+TABLES=""
+
+for n in $TARGETS ; do 
+  TNAME=certs`echo $n | sed s/\.x\.x\.x//`
+
+  python ./transvalid.py $TNAME  &
+  while [ `ps waux | grep -v grep | grep transva | wc -l` -ge $NUM_THRDS ] ; do
+    sleep 10s
+  done
+done
+

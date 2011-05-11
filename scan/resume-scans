@@ -1,0 +1,3 @@
+#!/bin/bash
+allssls 'for dir in /home/scan/*/ ; do grep "certGrab completed" $dir/Status* | tail -1 | cut -f 3 -d" " > $dir/startpos ; cp $dir/Status* $dir/previous.status ; done'
+

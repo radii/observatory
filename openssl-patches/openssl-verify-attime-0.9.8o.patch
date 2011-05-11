@@ -1,0 +1,82 @@
+--- verify.c.orig	2010-12-27 07:27:13.649653994 -0800
++++ verify.c	2010-12-27 07:27:28.613653994 -0800
+@@ -70,7 +70,7 @@
+ #define PROG	verify_main
+ 
+ static int MS_CALLBACK cb(int ok, X509_STORE_CTX *ctx);
+-static int check(X509_STORE *ctx, char *file, STACK_OF(X509) *uchain, STACK_OF(X509) *tchain, int purpose, ENGINE *e);
++static int check(X509_STORE *ctx, char *file, STACK_OF(X509) *uchain, STACK_OF(X509) *tchain, int purpose, ENGINE *e, time_t at_time);
+ static STACK_OF(X509) *load_untrusted(char *file);
+ static int v_verbose=0, vflags = 0;
+ 
+@@ -83,6 +83,8 @@
+ 	int purpose = -1;
+ 	char *CApath=NULL,*CAfile=NULL;
+ 	char *untfile = NULL, *trustfile = NULL;
++	char *check_time = NULL;
++	long int timestamp; time_t t;
+ 	STACK_OF(X509) *untrusted = NULL, *trusted = NULL;
+ 	X509_STORE *cert_ctx=NULL;
+ 	X509_LOOKUP *lookup=NULL;
+@@ -139,6 +141,11 @@
+ 				if (argc-- < 1) goto end;
+ 				trustfile= *(++argv);
+ 				}
++			else if (strcmp(*argv,"-attime") == 0)
++				{
++				if (argc-- < 1) goto end;
++				check_time= *(++argv);
++				}
+ #ifndef OPENSSL_NO_ENGINE
+ 			else if (strcmp(*argv,"-engine") == 0)
+ 				{
+@@ -208,14 +215,25 @@
+ 		}
+ 	}
+ 
+-	if (argc < 1) check(cert_ctx, NULL, untrusted, trusted, purpose, e);
++	if(check_time) {
++		// interpret the time parameter as seconds since Epoch
++		if (sscanf(check_time, "%li", &timestamp) != 1) {
++			BIO_printf(bio_err, "Error parsing timestamp %s\n", check_time);
++			ERR_print_errors(bio_err);
++			goto end;
++		}
++		t = (time_t) timestamp;  // on some platforms time_t may be a float
++        }
++
++	if (argc < 1) check(cert_ctx, NULL, untrusted, trusted, purpose, e, t);
+ 	else
+ 		for (i=0; i<argc; i++)
+-			check(cert_ctx,argv[i], untrusted, trusted, purpose, e);
++			check(cert_ctx,argv[i], untrusted, trusted, purpose, e, t);
+ 	ret=0;
+ end:
+ 	if (ret == 1) {
+ 		BIO_printf(bio_err,"usage: verify [-verbose] [-CApath path] [-CAfile file] [-purpose purpose] [-crl_check]");
++		BIO_printf(bio_err," [-attime timestamp]");
+ #ifndef OPENSSL_NO_ENGINE
+ 		BIO_printf(bio_err," [-engine e]");
+ #endif
+@@ -236,7 +254,7 @@
+ 	OPENSSL_EXIT(ret);
+ 	}
+ 
+-static int check(X509_STORE *ctx, char *file, STACK_OF(X509) *uchain, STACK_OF(X509) *tchain, int purpose, ENGINE *e)
++static int check(X509_STORE *ctx, char *file, STACK_OF(X509) *uchain, STACK_OF(X509) *tchain, int purpose, ENGINE *e, time_t at_time)
+ 	{
+ 	X509 *x=NULL;
+ 	int i=0,ret=0;
+@@ -261,6 +279,12 @@
+ 		}
+ 	if(tchain) X509_STORE_CTX_trusted_stack(csc, tchain);
+ 	if(purpose >= 0) X509_STORE_CTX_set_purpose(csc, purpose);
++
++	if (at_time) {
++		// the 0 is an apparently unused flags parameter.  Perhaps it should
++		// be removed?
++		X509_STORE_CTX_set_time(csc, 0, at_time);
++		}
+ 	i=X509_verify_cert(csc);
+ 	X509_STORE_CTX_free(csc);
+ 

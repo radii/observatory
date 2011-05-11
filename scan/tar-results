@@ -1,0 +1,5 @@
+#!/bin/bash
+for d in ssl* ; do 
+  echo tar czf $d.tgz $d/*.x.x.x/
+  tar czf $d.tgz $d/*.x.x.x/
+done

@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Import data from raw .results files into certs* tables, where * is the /8 
+
+# Usage: 
+
+# ./launch_parsers [ --resume ]
+
+# --resume prevents any certs* tables that already exist from being updated/reimported
+
+set -x
+
+export RESULTS_ROOT=/reimport/scan/
+
+if ! [ -d "$RESULTS_ROOT" ] ; then
+  echo RESULTS_ROOT $RESULTS_ROOT is not a directory
+  exit 1
+fi
+
+# This was sort-of optimised for 4 modern hyperthreaded CPU cores, but
+# hackparse keeps getting more computationally expensive.  YMMV.
+
+# XXX replace these crude timings with some load monitoring to launch new
+# parsing tasks when others are done.  Should save a few hours each time!
+
+NUM_THRDS=8
+
+export RESUME=0
+if [ $# -gt 1 ] && [ "$1" = --resume ] ; then
+  export RESUME=1
+fi
+
+
+
+cd $RESULTS_ROOT
+TARGETS=`echo *.x.x.x`
+echo $TARGETS
+if echo $targets | grep -q \* ; then
+  echo no targets found
+  exit 1
+fi
+cd ~-
+TABLES=""
+
+for n in $TARGETS ; do 
+  TNAME=certs`echo $n | sed s/\.x\.x\.x//`
+  echo $TNAME
+  if [ -f /tmp/scanner$n.$$.txt.gz ] && ! rm /tmp/scanner$n.$$.txt.gz  ; then
+    echo TRIPPED OVER SOMEONE ELSE\'S TEMP FILES
+  fi
+
+  if [ $RESUME = 1 ] && echo show tables | obsdb | grep -q $TNAME$ ; then
+    echo ALREADY EXISTS: $TNAME
+  else
+    echo IMPORTING $TNAME
+    python ./hackparse.py --table $TNAME --create $RESULTS_ROOT/$n | gzip -c > /tmp/scanner$n.$$.txt.gz &
+  fi
+  TABLES="$TABLES $TNAME"
+  while [ `ps waux | grep -v grep | grep hackpa | wc -l` -ge $NUM_THRDS ] ; do
+    sleep 10s
+  done
+done
+
+./once python python ./stitch_tables.py --into valid_certs $TABLES

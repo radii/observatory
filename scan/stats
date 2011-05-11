@@ -1,0 +1,19 @@
+#!/bin/bash
+d=`dirname $0`  # directory the script is in
+echo -n $d "    "
+cd $d
+for range in `ls nmap-out* | cut -f 3,4,5 -d- | uniq` ; do
+  echo -n " " $range"-X"
+  # There might no be a 45.x.x.x/ directory, even if we've been scanning
+  # there, because there might be no hosts listening on port 443.  If so,
+  # print a "!"
+  if ! [ -d `echo "$range"-X | tr X- x.` ] ; then
+    echo -n '!'
+  fi
+done
+echo
+echo -n `ls range* | wc -l` units,
+if [ "$1" = certs ] ; then
+   echo -n `find . -iname \*.results | wc -l` certs " "
+fi
+python ./ProgressReport.py

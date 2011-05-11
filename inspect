@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Extract the certs in a .results file into the certs/ directory,
+# and then prettyprint them
+
+target=`basename $1`
+if ! [ -f $1 ] ; then 
+  echo $1 is not a file\!
+  exit 1
+fi
+python ConvertStreamToPem.py $1
+
+for f in certs/$target* ; do
+  if ! [ -f $f ] ; then 
+    echo failed to split stream into pems
+    exit 1
+  fi
+  echo openssl x509 -noout -text -in $f
+  openssl x509 -noout -text -fingerprint -in $f
+done

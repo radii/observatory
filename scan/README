@@ -1,0 +1,12 @@
+Checkout a copy of this for each portion of the code.
+
+Set MYHOST in ControlScript.py in each of those to tell it which portion of
+the scan it's doing.  Then run ControlScript (we use "nohup" for that).
+
+If you wish to resume an interupted scanner, or start a new one at some offset
+inside a portion (sometimes desirable in response to /8s that are sparsely
+populated and therefore take a LONG time to scan), you can edit the "startpos"
+file in that checkout.
+
+cs2.py is like ControlScript but scans a much smaller number of /8s that have
+been allocated in the recent past.
